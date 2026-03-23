@@ -606,7 +606,7 @@ footer p{font-size:0.78rem;color:var(--muted)}
   <p>Análise de Dados · Power BI · ETL · DAX · SQL · Excel</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false">
+<script data-cfasync="false">
 // Email render
 window.addEventListener('DOMContentLoaded', function() {
   var e = atob('dGhheWFuZS1tYXRvc0Bob3RtYWlsLmNvbQ==');
@@ -617,53 +617,53 @@ window.addEventListener('DOMContentLoaded', function() {
 // Particles
 particlesJS("particles-js",{"particles":{"number":{"value":100,"density":{"enable":true,"value_area":900}},"color":{"value":"#00C8FF"},"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"}},"opacity":{"value":0.25,"random":false},"size":{"value":2.5,"random":true},"line_linked":{"enable":true,"distance":140,"color":"#0066FF","opacity":0.35,"width":0.8},"move":{"enable":true,"speed":2.5,"direction":"none","random":false,"straight":false,"out_mode":"out","bounce":false}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"repulse"},"onclick":{"enable":true,"mode":"push"},"resize":true},"modes":{"repulse":{"distance":120,"duration":0.4},"push":{"particles_nb":3}}},"retina_detect":true});
 
-// Reveal animation
-document.querySelectorAll(".reveal").forEach(el => el.classList.add("anim"));
-const obs = new IntersectionObserver((entries) => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) {
-      setTimeout(() => e.target.classList.add("visible"), i * 80);
+// Reveal
+document.querySelectorAll(".reveal").forEach(function(el){ el.classList.add("anim"); });
+var obs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e, i){
+    if(e.isIntersecting){
+      setTimeout(function(){ e.target.classList.add("visible"); }, i * 80);
       obs.unobserve(e.target);
     }
   });
 }, { threshold: 0.05, rootMargin: "0px 0px -20px 0px" });
-document.querySelectorAll(".reveal").forEach(el => obs.observe(el));
+document.querySelectorAll(".reveal").forEach(function(el){ obs.observe(el); });
 
 // Skill bars
-const barObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.querySelectorAll(".skill-bar-fill").forEach(b => {
+var barObs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      e.target.querySelectorAll(".skill-bar-fill").forEach(function(b){
         b.style.width = b.dataset.w + "%";
       });
       barObs.unobserve(e.target);
     }
   });
 }, { threshold: 0.2 });
-document.querySelectorAll(".about-grid").forEach(el => barObs.observe(el));
+document.querySelectorAll(".about-grid").forEach(function(el){ barObs.observe(el); });
 
 // Counters
 function animCount(el) {
-  const target = +el.dataset.target;
-  let cur = 0;
-  const step = target / 60;
-  const t = setInterval(() => {
+  var target = +el.dataset.target;
+  var cur = 0;
+  var step = target / 60;
+  var t = setInterval(function(){
     cur = Math.min(cur + step, target);
     el.textContent = Math.floor(cur) + "+";
-    if (cur >= target) clearInterval(t);
+    if(cur >= target) clearInterval(t);
   }, 25);
 }
-const cntObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
+var cntObs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
       e.target.querySelectorAll(".counter-n").forEach(animCount);
       cntObs.unobserve(e.target);
     }
   });
 }, { threshold: 0.3 });
-document.querySelectorAll("#counters").forEach(el => cntObs.observe(el));
+document.querySelectorAll("#counters").forEach(function(el){ cntObs.observe(el); });
 
-// Hamburger menu
+// Hamburger
 function toggleMenu() {
   document.getElementById("hamburger").classList.toggle("open");
   document.getElementById("nav-links").classList.toggle("open");
@@ -675,7 +675,7 @@ function closeMenu() {
   document.body.style.overflow = "";
 }
 
-// Form reply-to sync
+// Form reply-to
 document.addEventListener("input", function(e) {
   if (e.target.name === "email") {
     var rt = document.getElementById("replyto-field");
